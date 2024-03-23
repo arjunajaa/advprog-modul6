@@ -33,3 +33,8 @@ Jika `request_line` berisi permintaan GET ke `/`, maka akan dikirimkan respons y
 Saya melakukan refactoring pada kode karena langkah ini mirip dengan langkah sebelumnya. Namun, ada perbedaan pada bagian penanganan respons dan berkas yang dikirim, seperti `status_line` dan `filename`.
 
 ### Commit 4
+Untuk mencapai simulasi slow response, saya telah menambahkan penundaan selama 10 detik pada server sebelum memberikan respons. Ini dilakukan dengan menggunakan fungsi `std::thread::sleep` dan menentukan durasi penundaan sebelum memberikan respons.
+
+Milestone ini mengubah struktur `if-else` menjadi penggunaan `match` untuk menangani tiga jenis permintaan HTTP: `GET /`, `GET /sleep`, dan permintaan lainnya. Ketika permintaan adalah `GET /sleep`, server akan melakukan penundaan selama 10 detik sebelum mengirimkan respons. Ketika server dijalankan dan permintaan `/sleep` diterima, permintaan lain seperti `/` akan tertunda sampai waktu penundaan (10 detik) selesai sebelum menerima respons. Hal ini memastikan bahwa respons untuk permintaan lain akan tertunda hingga selesai menangani permintaan `GET /sleep`.
+
+### Commit 5

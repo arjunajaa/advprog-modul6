@@ -38,3 +38,8 @@ Untuk mencapai simulasi slow response, saya telah menambahkan penundaan selama 1
 Milestone ini mengubah struktur `if-else` menjadi penggunaan `match` untuk menangani tiga jenis permintaan HTTP: `GET /`, `GET /sleep`, dan permintaan lainnya. Ketika permintaan adalah `GET /sleep`, server akan melakukan penundaan selama 10 detik sebelum mengirimkan respons. Ketika server dijalankan dan permintaan `/sleep` diterima, permintaan lain seperti `/` akan tertunda sampai waktu penundaan (10 detik) selesai sebelum menerima respons. Hal ini memastikan bahwa respons untuk permintaan lain akan tertunda hingga selesai menangani permintaan `GET /sleep`.
 
 ### Commit 5
+Saya telah mengimplementasikan multi-threaded web server dengan menggunakan thread pool.
+
+Thread pool adalah kumpulan thread yang telah dibuat sebelumnya dan siap untuk menangani tugas. Ketika ada tugas baru yang harus dilakukan, salah satu thread dari pool akan diambil untuk menyelesaikan tugas tersebut. Sementara itu, thread lain dalam pool tetap tersedia untuk menangani tugas-tugas berikutnya. Setelah menyelesaikan tugasnya, thread akan kembali ke dalam pool untuk menangani tugas selanjutnya. Konsep thread pool ini memungkinkan server untuk memproses banyak koneksi secara bersamaan, yang pada akhirnya meningkatkan throughput atau kinerja server.
+
+Jumlah thread dalam pool biasanya dibatasi untuk mencegah serangan Denial of Service (DoS) yang dapat menghabiskan semua sumber daya server. Dengan batasan ini, server hanya dapat memproses hingga N permintaan secara bersamaan, di mana N adalah jumlah thread dalam pool. Ini membantu menjaga stabilitas dan ketersediaan server saat menghadapi beban tinggi.

@@ -31,7 +31,7 @@ let request_line = match request_lines.next() {
 Jika `request_line` berisi permintaan GET ke `/`, maka akan dikirimkan respons yang berisi isi berkas `hello.html`. Namun, jika permintaan tidak sesuai, kode akan mengeksekusi blok `else` untuk menangani permintaan yang tidak valid dengan mengirimkan berkas `404.html`.
 
 Saya melakukan refactoring pada kode karena langkah ini mirip dengan langkah sebelumnya. Namun, ada perbedaan pada bagian penanganan respons dan berkas yang dikirim, seperti `status_line` dan `filename`.
-
+![commit3.png](assets%2Fimg%2Fcommit3.png)
 ### Commit 4
 Untuk mencapai simulasi slow response, saya telah menambahkan penundaan selama 10 detik pada server sebelum memberikan respons. Ini dilakukan dengan menggunakan fungsi `std::thread::sleep` dan menentukan durasi penundaan sebelum memberikan respons.
 
